@@ -39,6 +39,9 @@
 		DE50355B1A9E596600636128 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5035551A9E596600636128 /* ParseFacebookUtils.framework */; };
 		DE50355C1A9E596600636128 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5035561A9E596600636128 /* Bolts.framework */; };
 		DE50355D1A9E596600636128 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5035571A9E596600636128 /* FacebookSDK.framework */; };
+		DE55FDCD1A9FC4EC00215D42 /* Logo512w.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCC1A9FC4EC00215D42 /* Logo512w.png */; };
+		DE55FDD01A9FC98500215D42 /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCE1A9FC98500215D42 /* FacebookButton.png */; };
+		DE55FDD11A9FC98500215D42 /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCF1A9FC98500215D42 /* LoginButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		DE5035551A9E596600636128 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		DE5035561A9E596600636128 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		DE5035571A9E596600636128 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		DE55FDCC1A9FC4EC00215D42 /* Logo512w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo512w.png; sourceTree = "<group>"; };
+		DE55FDCE1A9FC98500215D42 /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton.png; sourceTree = "<group>"; };
+		DE55FDCF1A9FC98500215D42 /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 		DE5034F61A9E58F000636128 = {
 			isa = PBXGroup;
 			children = (
+				DE55FDCA1A9FC4D500215D42 /* Assets */,
 				DE50352B1A9E592D00636128 /* Frameworks */,
 				DE5035011A9E58F000636128 /* tripfy */,
 				DE50351E1A9E58F000636128 /* tripfyTests */,
@@ -244,6 +251,24 @@
 			name = Default;
 			sourceTree = "<group>";
 		};
+		DE55FDCA1A9FC4D500215D42 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DE55FDCE1A9FC98500215D42 /* FacebookButton.png */,
+				DE55FDCF1A9FC98500215D42 /* LoginButton.png */,
+				DE55FDCB1A9FC4DF00215D42 /* Launch */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		DE55FDCB1A9FC4DF00215D42 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				DE55FDCC1A9FC4EC00215D42 /* Logo512w.png */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,8 +350,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE5035111A9E58F000636128 /* Main.storyboard in Resources */,
+				DE55FDD11A9FC98500215D42 /* LoginButton.png in Resources */,
 				DE5035161A9E58F000636128 /* LaunchScreen.xib in Resources */,
+				DE55FDD01A9FC98500215D42 /* FacebookButton.png in Resources */,
 				DE5035131A9E58F000636128 /* Images.xcassets in Resources */,
+				DE55FDCD1A9FC4EC00215D42 /* Logo512w.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +584,7 @@
 				DE5035271A9E58F000636128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE5035281A9E58F000636128 /* Build configuration list for PBXNativeTarget "tripfyTests" */ = {
 			isa = XCConfigurationList;
@@ -564,6 +593,7 @@
 				DE50352A1A9E58F000636128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

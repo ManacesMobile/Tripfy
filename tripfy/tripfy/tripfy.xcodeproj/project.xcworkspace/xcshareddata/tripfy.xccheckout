@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CA66BFA3-3BD1-4711-848F-87E4237712D4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>tripfy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>18EE891481CDD06A15638F94DC39866EFFDE34F0</key>
+		<string>https://github.com/ManacesMobile/Tripfy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>tripfy/tripfy/tripfy.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>18EE891481CDD06A15638F94DC39866EFFDE34F0</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ManacesMobile/Tripfy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>18EE891481CDD06A15638F94DC39866EFFDE34F0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18EE891481CDD06A15638F94DC39866EFFDE34F0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Tripfy</string>
+		</dict>
+	</array>
+</dict>
+</plist>
