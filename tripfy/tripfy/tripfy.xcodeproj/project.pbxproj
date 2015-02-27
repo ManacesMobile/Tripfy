@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BED2A2E01AA072B1003DA5AF /* tripfy_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED2A2DF1AA072B1003DA5AF /* tripfy_LoginViewController.m */; };
+		BED2A2E61AA0B7C5003DA5AF /* tripfy_ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED2A2E51AA0B7C5003DA5AF /* tripfy_ProgressViewController.m */; };
+		BED2A2EB1AA0B8E0003DA5AF /* tripfy_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED2A2EA1AA0B8E0003DA5AF /* tripfy_MainViewController.m */; };
+		BED2A2F01AA0C317003DA5AF /* tripfy_WellcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED2A2EF1AA0C317003DA5AF /* tripfy_WellcomeViewController.m */; };
 		DE5035051A9E58F000636128 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5035041A9E58F000636128 /* main.m */; };
 		DE5035081A9E58F000636128 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5035071A9E58F000636128 /* AppDelegate.m */; };
 		DE50350B1A9E58F000636128 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE50350A1A9E58F000636128 /* FirstViewController.m */; };
@@ -55,11 +59,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BED2A2DE1AA072B1003DA5AF /* tripfy_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_LoginViewController.h; sourceTree = "<group>"; };
+		BED2A2DF1AA072B1003DA5AF /* tripfy_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_LoginViewController.m; sourceTree = "<group>"; };
+		BED2A2E41AA0B7C5003DA5AF /* tripfy_ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_ProgressViewController.h; sourceTree = "<group>"; };
+		BED2A2E51AA0B7C5003DA5AF /* tripfy_ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_ProgressViewController.m; sourceTree = "<group>"; };
+		BED2A2E91AA0B8E0003DA5AF /* tripfy_MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_MainViewController.h; sourceTree = "<group>"; };
+		BED2A2EA1AA0B8E0003DA5AF /* tripfy_MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_MainViewController.m; sourceTree = "<group>"; };
+		BED2A2EE1AA0C317003DA5AF /* tripfy_WellcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_WellcomeViewController.h; sourceTree = "<group>"; };
+		BED2A2EF1AA0C317003DA5AF /* tripfy_WellcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_WellcomeViewController.m; sourceTree = "<group>"; };
 		DE5034FF1A9E58F000636128 /* tripfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5035031A9E58F000636128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5035041A9E58F000636128 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DE5035061A9E58F000636128 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		DE5035071A9E58F000636128 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DE5035061A9E58F000636128 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = tripfy/AppDelegate.h; sourceTree = "<group>"; };
+		DE5035071A9E58F000636128 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = tripfy/AppDelegate.m; sourceTree = "<group>"; };
 		DE5035091A9E58F000636128 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		DE50350A1A9E58F000636128 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		DE50350C1A9E58F000636128 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -141,9 +153,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BED2A2DA1AA07221003DA5AF /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				DE50350F1A9E58F000636128 /* Main.storyboard */,
+			);
+			name = StoryBoards;
+			sourceTree = "<group>";
+		};
+		BED2A2DB1AA07251003DA5AF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BED2A2DD1AA07278003DA5AF /* Login */,
+				BED2A2E81AA0B8CD003DA5AF /* Main */,
+				BED2A2E71AA0B7C9003DA5AF /* Progress */,
+				BED2A2ED1AA0C2F1003DA5AF /* Wellcome */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		BED2A2DC1AA0725D003DA5AF /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				DE5035061A9E58F000636128 /* AppDelegate.h */,
+				DE5035071A9E58F000636128 /* AppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		BED2A2DD1AA07278003DA5AF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BED2A2DE1AA072B1003DA5AF /* tripfy_LoginViewController.h */,
+				BED2A2DF1AA072B1003DA5AF /* tripfy_LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		BED2A2E71AA0B7C9003DA5AF /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				BED2A2E41AA0B7C5003DA5AF /* tripfy_ProgressViewController.h */,
+				BED2A2E51AA0B7C5003DA5AF /* tripfy_ProgressViewController.m */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		BED2A2E81AA0B8CD003DA5AF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BED2A2E91AA0B8E0003DA5AF /* tripfy_MainViewController.h */,
+				BED2A2EA1AA0B8E0003DA5AF /* tripfy_MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		BED2A2ED1AA0C2F1003DA5AF /* Wellcome */ = {
+			isa = PBXGroup;
+			children = (
+				BED2A2EE1AA0C317003DA5AF /* tripfy_WellcomeViewController.h */,
+				BED2A2EF1AA0C317003DA5AF /* tripfy_WellcomeViewController.m */,
+			);
+			name = Wellcome;
+			sourceTree = "<group>";
+		};
 		DE5034F61A9E58F000636128 = {
 			isa = PBXGroup;
 			children = (
+				BED2A2DC1AA0725D003DA5AF /* Delegate */,
+				BED2A2DB1AA07251003DA5AF /* Classes */,
+				BED2A2DA1AA07221003DA5AF /* StoryBoards */,
 				DE55FDCA1A9FC4D500215D42 /* Assets */,
 				DE50352B1A9E592D00636128 /* Frameworks */,
 				DE5035011A9E58F000636128 /* tripfy */,
@@ -164,13 +243,10 @@
 		DE5035011A9E58F000636128 /* tripfy */ = {
 			isa = PBXGroup;
 			children = (
-				DE5035061A9E58F000636128 /* AppDelegate.h */,
-				DE5035071A9E58F000636128 /* AppDelegate.m */,
 				DE5035091A9E58F000636128 /* FirstViewController.h */,
 				DE50350A1A9E58F000636128 /* FirstViewController.m */,
 				DE50350C1A9E58F000636128 /* SecondViewController.h */,
 				DE50350D1A9E58F000636128 /* SecondViewController.m */,
-				DE50350F1A9E58F000636128 /* Main.storyboard */,
 				DE5035121A9E58F000636128 /* Images.xcassets */,
 				DE5035141A9E58F000636128 /* LaunchScreen.xib */,
 				DE5035021A9E58F000636128 /* Supporting Files */,
@@ -373,8 +449,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE50350E1A9E58F000636128 /* SecondViewController.m in Sources */,
+				BED2A2E01AA072B1003DA5AF /* tripfy_LoginViewController.m in Sources */,
+				BED2A2EB1AA0B8E0003DA5AF /* tripfy_MainViewController.m in Sources */,
 				DE5035081A9E58F000636128 /* AppDelegate.m in Sources */,
+				BED2A2E61AA0B7C5003DA5AF /* tripfy_ProgressViewController.m in Sources */,
 				DE50350B1A9E58F000636128 /* FirstViewController.m in Sources */,
+				BED2A2F01AA0C317003DA5AF /* tripfy_WellcomeViewController.m in Sources */,
 				DE5035051A9E58F000636128 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +484,7 @@
 				DE5035101A9E58F000636128 /* Base */,
 			);
 			name = Main.storyboard;
+			path = tripfy;
 			sourceTree = "<group>";
 		};
 		DE5035141A9E58F000636128 /* LaunchScreen.xib */ = {
@@ -498,6 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -517,6 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

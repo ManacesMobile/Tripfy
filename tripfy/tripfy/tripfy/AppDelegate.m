@@ -9,8 +9,11 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "tripfy_ProgressViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate (){
+    tripfy_ProgressViewController *progress;
+}
 
 @end
 
@@ -72,13 +75,17 @@
     } else
 #endif
     {
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    progress = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_ProgressViewController"];
+    //progress.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    progress.view.frame = CGRectMake(0, 0, self.window.rootViewController.view.frame.size.width, self.window.rootViewController.view.frame.size.height);
+    [self.window.rootViewController.view addSubview:progress.view];
     
-
+    [self hideProgress];
     return YES;
 }
 
@@ -143,6 +150,14 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[PFFacebookUtils session] close];
+}
+
+-(void) hideProgress{
+    progress.view.hidden = YES;
+}
+
+-(void) showProgress{
+    progress.view.hidden = NO;
 }
 
 @end
