@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "tripfy_Utilties.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) tripfy_Utilties *utils;
 -(void) hideProgress;
 -(void) showProgress;
 

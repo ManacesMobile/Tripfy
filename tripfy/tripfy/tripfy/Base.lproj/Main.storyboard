@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uJh-fN-ESN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uJh-fN-ESN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="-320"/>
+            <point key="canvasLocation" x="760" y="360"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="360"/>
+            <point key="canvasLocation" x="760" y="1040"/>
         </scene>
         <!--Tripfy Progress View Controller-->
         <scene sceneID="MVf-Ft-jve">
@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="-1948" y="-674"/>
         </scene>
-        <!--Tripfy Main View Controller-->
+        <!--Tripfy Container View Controller-->
         <scene sceneID="8bn-mj-ie2">
             <objects>
-                <viewController id="uJh-fN-ESN" customClass="tripfy_MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripfy_ContainerViewController" id="uJh-fN-ESN" customClass="tripfy_ContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Le-Ki-R5J"/>
                         <viewControllerLayoutGuide type="bottom" id="Wdw-Ba-Clf"/>
@@ -148,7 +148,21 @@
                     <view key="view" contentMode="scaleToFill" id="3j4-md-lgv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIE-yi-fib">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Fvd-yN-hXA" kind="embed" identifier="mainSegue" id="5CU-Uv-0tN"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kIE-yi-fib" secondAttribute="trailing" id="g3s-Ct-Bpp"/>
+                            <constraint firstItem="kIE-yi-fib" firstAttribute="top" secondItem="3j4-md-lgv" secondAttribute="top" id="jh3-i3-7Uw"/>
+                            <constraint firstItem="kIE-yi-fib" firstAttribute="leading" secondItem="3j4-md-lgv" secondAttribute="leading" id="nfm-zf-UR8"/>
+                            <constraint firstItem="Wdw-Ba-Clf" firstAttribute="top" secondItem="kIE-yi-fib" secondAttribute="bottom" id="rCR-cc-xf8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="92x-oU-ItV"/>
                 </viewController>
@@ -236,7 +250,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.41176470590000003" green="0.67843137249999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="delegate" destination="Ozx-V4-gFc" id="6EY-1l-clb"/>
                                         </connections>
@@ -267,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-cP-mwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="0.0"/>
+            <point key="canvasLocation" x="10" y="-712"/>
         </scene>
         <!--Tripfy Wellcome View Controller-->
         <scene sceneID="62W-Uz-bT0">
@@ -285,12 +299,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2mI-UG-GbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="184" y="-2"/>
+            <point key="canvasLocation" x="10" y="-30"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tripfy Tabbar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="tripfy_TabbarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -304,7 +318,33 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="0.0"/>
+            <point key="canvasLocation" x="10" y="680"/>
+        </scene>
+        <!--Tripfy Segue View Controller-->
+        <scene sceneID="Ood-Ia-dJa">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Fvd-yN-hXA" customClass="tripfy_SegueViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BaB-at-eUJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="AdW-je-GBQ"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0JJ-0r-Cx6">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="200"/>
+                    <connections>
+                        <segue destination="lkF-EL-mKK" kind="custom" identifier="wellcome" customClass="tripfy_Segue" id="5Vg-MZ-pQe"/>
+                        <segue destination="49e-Tb-3d3" kind="custom" identifier="main" customClass="tripfy_Segue" id="QAe-BY-q6o"/>
+                        <segue destination="Ozx-V4-gFc" kind="custom" identifier="login" customClass="tripfy_Segue" id="MJS-WI-KZV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RsG-UF-UHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-556" y="0.0"/>
         </scene>
     </scenes>
     <resources>

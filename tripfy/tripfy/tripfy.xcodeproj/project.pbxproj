@@ -46,6 +46,11 @@
 		DE55FDCD1A9FC4EC00215D42 /* Logo512w.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCC1A9FC4EC00215D42 /* Logo512w.png */; };
 		DE55FDD01A9FC98500215D42 /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCE1A9FC98500215D42 /* FacebookButton.png */; };
 		DE55FDD11A9FC98500215D42 /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE55FDCF1A9FC98500215D42 /* LoginButton.png */; };
+		DEE94C0E1AA1F53300092183 /* tripfy_SegueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE94C0D1AA1F53300092183 /* tripfy_SegueViewController.m */; };
+		DEE94C111AA1F64600092183 /* tripfy_Segue.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE94C101AA1F64600092183 /* tripfy_Segue.m */; };
+		DEE94C151AA1F6D100092183 /* tripfy_Utilties.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE94C141AA1F6D100092183 /* tripfy_Utilties.m */; };
+		DEE94C181AA3652800092183 /* tripfy_ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE94C171AA3652800092183 /* tripfy_ContainerViewController.m */; };
+		DEE94C1C1AA366A700092183 /* tripfy_TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE94C1B1AA366A700092183 /* tripfy_TabbarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +114,16 @@
 		DE55FDCC1A9FC4EC00215D42 /* Logo512w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo512w.png; sourceTree = "<group>"; };
 		DE55FDCE1A9FC98500215D42 /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton.png; sourceTree = "<group>"; };
 		DE55FDCF1A9FC98500215D42 /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
+		DEE94C0C1AA1F53300092183 /* tripfy_SegueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_SegueViewController.h; sourceTree = "<group>"; };
+		DEE94C0D1AA1F53300092183 /* tripfy_SegueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_SegueViewController.m; sourceTree = "<group>"; };
+		DEE94C0F1AA1F64600092183 /* tripfy_Segue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_Segue.h; sourceTree = "<group>"; };
+		DEE94C101AA1F64600092183 /* tripfy_Segue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_Segue.m; sourceTree = "<group>"; };
+		DEE94C131AA1F6D100092183 /* tripfy_Utilties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_Utilties.h; sourceTree = "<group>"; };
+		DEE94C141AA1F6D100092183 /* tripfy_Utilties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_Utilties.m; sourceTree = "<group>"; };
+		DEE94C161AA3652800092183 /* tripfy_ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_ContainerViewController.h; sourceTree = "<group>"; };
+		DEE94C171AA3652800092183 /* tripfy_ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_ContainerViewController.m; sourceTree = "<group>"; };
+		DEE94C1A1AA366A700092183 /* tripfy_TabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripfy_TabbarViewController.h; sourceTree = "<group>"; };
+		DEE94C1B1AA366A700092183 /* tripfy_TabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripfy_TabbarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +179,7 @@
 		BED2A2DB1AA07251003DA5AF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DEE94C191AA3652B00092183 /* Container */,
 				BED2A2DD1AA07278003DA5AF /* Login */,
 				BED2A2E81AA0B8CD003DA5AF /* Main */,
 				BED2A2E71AA0B7C9003DA5AF /* Progress */,
@@ -204,6 +220,8 @@
 			children = (
 				BED2A2E91AA0B8E0003DA5AF /* tripfy_MainViewController.h */,
 				BED2A2EA1AA0B8E0003DA5AF /* tripfy_MainViewController.m */,
+				DEE94C1A1AA366A700092183 /* tripfy_TabbarViewController.h */,
+				DEE94C1B1AA366A700092183 /* tripfy_TabbarViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -220,6 +238,8 @@
 		DE5034F61A9E58F000636128 = {
 			isa = PBXGroup;
 			children = (
+				DEE94C121AA1F6A300092183 /* Utilitis */,
+				DEE94C0B1AA1F51900092183 /* Segue */,
 				BED2A2DC1AA0725D003DA5AF /* Delegate */,
 				BED2A2DB1AA07251003DA5AF /* Classes */,
 				BED2A2DA1AA07221003DA5AF /* StoryBoards */,
@@ -345,6 +365,35 @@
 			name = Launch;
 			sourceTree = "<group>";
 		};
+		DEE94C0B1AA1F51900092183 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				DEE94C0C1AA1F53300092183 /* tripfy_SegueViewController.h */,
+				DEE94C0D1AA1F53300092183 /* tripfy_SegueViewController.m */,
+				DEE94C0F1AA1F64600092183 /* tripfy_Segue.h */,
+				DEE94C101AA1F64600092183 /* tripfy_Segue.m */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
+		DEE94C121AA1F6A300092183 /* Utilitis */ = {
+			isa = PBXGroup;
+			children = (
+				DEE94C131AA1F6D100092183 /* tripfy_Utilties.h */,
+				DEE94C141AA1F6D100092183 /* tripfy_Utilties.m */,
+			);
+			name = Utilitis;
+			sourceTree = "<group>";
+		};
+		DEE94C191AA3652B00092183 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				DEE94C161AA3652800092183 /* tripfy_ContainerViewController.h */,
+				DEE94C171AA3652800092183 /* tripfy_ContainerViewController.m */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -448,12 +497,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE94C181AA3652800092183 /* tripfy_ContainerViewController.m in Sources */,
 				DE50350E1A9E58F000636128 /* SecondViewController.m in Sources */,
 				BED2A2E01AA072B1003DA5AF /* tripfy_LoginViewController.m in Sources */,
 				BED2A2EB1AA0B8E0003DA5AF /* tripfy_MainViewController.m in Sources */,
 				DE5035081A9E58F000636128 /* AppDelegate.m in Sources */,
+				DEE94C151AA1F6D100092183 /* tripfy_Utilties.m in Sources */,
 				BED2A2E61AA0B7C5003DA5AF /* tripfy_ProgressViewController.m in Sources */,
+				DEE94C111AA1F64600092183 /* tripfy_Segue.m in Sources */,
 				DE50350B1A9E58F000636128 /* FirstViewController.m in Sources */,
+				DEE94C1C1AA366A700092183 /* tripfy_TabbarViewController.m in Sources */,
+				DEE94C0E1AA1F53300092183 /* tripfy_SegueViewController.m in Sources */,
 				BED2A2F01AA0C317003DA5AF /* tripfy_WellcomeViewController.m in Sources */,
 				DE5035051A9E58F000636128 /* main.m in Sources */,
 			);

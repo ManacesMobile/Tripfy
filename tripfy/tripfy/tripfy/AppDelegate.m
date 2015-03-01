@@ -18,7 +18,7 @@
 @end
 
 @implementation AppDelegate
-
+@synthesize utils;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -86,6 +86,9 @@
     [self.window.rootViewController.view addSubview:progress.view];
     
     [self hideProgress];
+    
+    utils = [[tripfy_Utilties alloc] init];
+    
     return YES;
 }
 
