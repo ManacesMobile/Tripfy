@@ -7,8 +7,13 @@
 //
 
 #import "tripfy_LoginViewController.h"
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "AppDelegate.h"
 
-@interface tripfy_LoginViewController ()<UIScrollViewDelegate,UITextFieldDelegate>
+@interface tripfy_LoginViewController ()<UIScrollViewDelegate,UITextFieldDelegate>{
+    AppDelegate *tripfy;
+}
 
 @end
 
@@ -17,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [txt_email setReturnKeyType:UIReturnKeyGo];
     [txt_password setReturnKeyType:UIReturnKeyGo];
     // Do any additional setup after loading the view.
@@ -55,6 +61,7 @@
     return YES;
 }
 
+
 -(void) scrollDefault{
     scroll_login.contentSize = CGSizeMake(scroll_login.frame.size.width, scroll_login.frame.size.height);
     CGPoint offset = CGPointMake(0, 0);
@@ -76,6 +83,44 @@
 }
 
 - (IBAction)loginFacebook:(id)sender {
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    
+    // Login PFUser using Facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [tripfy hideProgress]; // Hide loading indicator
+        
+        if (!user) {
+            NSString *errorMessage = nil;
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                errorMessage = @"Uh oh. The user cancelled the Facebook login.";
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                errorMessage = [error localizedDescription];
+            }
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        } else {
+            if (user.isNew) {
+                NSLog(@"User with facebook signed up and logged in!");
+            } else {
+                NSLog(@"User with facebook logged in!");
+            }
+            [self goWellcome];
+        }
+    }];
+    
+    [tripfy showProgress]; // Show loading indicator until login is finished
+
+}
+
+- (void)goWellcome{
+    [tripfy.root wellcome];
 }
 
 - (IBAction)signUp:(id)sender {

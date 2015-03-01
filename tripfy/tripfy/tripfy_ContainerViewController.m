@@ -7,8 +7,11 @@
 //
 
 #import "tripfy_ContainerViewController.h"
+#import "AppDelegate.h"
 
-@interface tripfy_ContainerViewController ()
+@interface tripfy_ContainerViewController (){
+    AppDelegate *tripfy;
+}
 
 @end
 
@@ -16,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    tripfy.root = self;
     // Do any additional setup after loading the view.
 }
 
@@ -30,6 +35,18 @@
     if ([segue.identifier isEqualToString:@"mainSegue"]) {
         self.tripfy_segue = segue.destinationViewController;
     }
+}
+
+-(void) wellcome{
+    [self.tripfy_segue swapViewControllers:@"wellcome"];
+}
+
+-(void) main{
+    [self.tripfy_segue swapViewControllers:@"main"];
+}
+
+-(void) login{
+    [self.tripfy_segue swapViewControllers:@"login"];
 }
 
 @end
