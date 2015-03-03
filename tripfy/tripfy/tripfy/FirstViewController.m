@@ -7,8 +7,11 @@
 //
 
 #import "FirstViewController.h"
+#import "AppDelegate.h"
 
-@interface FirstViewController ()
+@interface FirstViewController (){
+    AppDelegate *tripfy;
+}
 
 @end
 
@@ -16,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -24,4 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backmain:(id)sender {
+    [tripfy.root wellcome];
+}
 @end

@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface tripfy_WellcomeViewController : UIViewController
-
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) IBOutlet UILabel *headerNameLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *headerImageView;
+@property (nonatomic, strong) NSArray *rowTitleArray;
+@property (nonatomic, strong) NSMutableArray *rowDataArray;
+- (IBAction)enter:(id)sender;
+- (IBAction)logOut:(id)sender;
 @end

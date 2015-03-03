@@ -30,13 +30,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-4P-v2d">
+                                <rect key="frame" x="203" y="383" width="195" height="30"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.76078431369999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0Mq-JA-2a8"/>
+                                    <constraint firstAttribute="width" constant="195" id="uXW-aW-YoQ"/>
+                                </constraints>
+                                <state key="normal" title="Main">
+                                    <color key="titleColor" red="1" green="1" blue="0.99984377619999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backmain:" destination="9pv-A4-QxB" eventType="touchUpInside" id="XPk-s8-Wef"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
+                            <constraint firstItem="cWh-4P-v2d" firstAttribute="top" secondItem="A5M-7J-77L" secondAttribute="bottom" constant="37" id="9JI-99-5tu"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstAttribute="centerX" secondItem="cWh-4P-v2d" secondAttribute="centerX" id="rwC-qz-Fxy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
@@ -294,8 +311,80 @@
                     <view key="view" contentMode="scaleToFill" id="xtO-Et-I4K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTB-Nt-MHz">
+                                <rect key="frame" x="140" y="260" width="320" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wah-AR-Mb4">
+                                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Loading..." lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="54X-fk-tEs">
+                                        <rect key="frame" x="80" y="29" width="230" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="lvh-Fy-APH"/>
+                                    <constraint firstAttribute="width" constant="320" id="uR8-0H-tV2"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACf-b8-kXe">
+                                <rect key="frame" x="145" y="362" width="310" height="30"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.76078431369999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="0TL-Ib-9XX"/>
+                                    <constraint firstAttribute="height" constant="30" id="oV7-u9-6Xz"/>
+                                </constraints>
+                                <state key="normal" title="Enter">
+                                    <color key="titleColor" red="1" green="1" blue="0.99984377619999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="enter:" destination="lkF-EL-mKK" eventType="touchUpInside" id="h9i-GO-jGc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvE-eu-dBW">
+                                <rect key="frame" x="145" y="411" width="310" height="30"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.76078431369999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="isP-aM-Ids"/>
+                                    <constraint firstAttribute="height" constant="30" id="mSs-rd-wBo"/>
+                                </constraints>
+                                <state key="normal" title="Logut">
+                                    <color key="titleColor" red="1" green="1" blue="0.99984377619999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="lkF-EL-mKK" eventType="touchUpInside" id="bLC-2A-S89"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="TTB-Nt-MHz" secondAttribute="centerY" id="6om-NK-8Dd"/>
+                            <constraint firstAttribute="trailing" secondItem="MvE-eu-dBW" secondAttribute="trailing" constant="145" id="Uy5-BE-Qau"/>
+                            <constraint firstAttribute="centerX" secondItem="TTB-Nt-MHz" secondAttribute="centerX" id="WPW-nj-nW3"/>
+                            <constraint firstAttribute="centerX" secondItem="MvE-eu-dBW" secondAttribute="centerX" id="apn-BJ-oiV"/>
+                            <constraint firstItem="MvE-eu-dBW" firstAttribute="top" secondItem="ACf-b8-kXe" secondAttribute="bottom" constant="19" id="en9-VE-Foa"/>
+                            <constraint firstAttribute="centerX" secondItem="ACf-b8-kXe" secondAttribute="centerX" id="mFh-RE-rbg"/>
+                            <constraint firstItem="MvE-eu-dBW" firstAttribute="leading" secondItem="xtO-Et-I4K" secondAttribute="leading" constant="145" id="pfl-2g-Z4t"/>
+                            <constraint firstItem="ACf-b8-kXe" firstAttribute="top" secondItem="TTB-Nt-MHz" secondAttribute="bottom" constant="22" id="xPX-ii-CjK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Uy5-BE-Qau"/>
+                                <exclude reference="pfl-2g-Z4t"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="headerImageView" destination="Wah-AR-Mb4" id="atI-bW-Jvf"/>
+                        <outlet property="headerNameLabel" destination="54X-fk-tEs" id="JxG-tm-982"/>
+                        <outlet property="headerView" destination="TTB-Nt-MHz" id="z0B-Ma-8ZP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2mI-UG-GbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
