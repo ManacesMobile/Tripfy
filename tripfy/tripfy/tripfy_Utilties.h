@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface tripfy_Utilties : NSObject
 - (BOOL) stringCheck:(NSString *) string;
-
+- (UIImage *) maskImage:(UIImage *) image withMask:(UIImage *) mask;
 
 @end

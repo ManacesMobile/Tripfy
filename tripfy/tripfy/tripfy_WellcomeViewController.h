@@ -14,6 +14,12 @@
 @property (nonatomic, strong) IBOutlet UIImageView *headerImageView;
 @property (nonatomic, strong) NSArray *rowTitleArray;
 @property (nonatomic, strong) NSMutableArray *rowDataArray;
+@property (weak, nonatomic) IBOutlet UIView *view_switch;
+@property (weak, nonatomic) IBOutlet UIButton *btn_plan;
+@property (weak, nonatomic) IBOutlet UIButton *btn_quickTrip;
+
 - (IBAction)enter:(id)sender;
 - (IBAction)logOut:(id)sender;
+- (IBAction)plan:(id)sender;
+- (IBAction)quickTrip:(id)sender;
 @end

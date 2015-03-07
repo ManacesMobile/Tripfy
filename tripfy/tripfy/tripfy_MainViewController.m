@@ -38,13 +38,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Check if user is cached and linked to Facebook, if so, bypass login
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        NSLog(@"Enter");
-        [self showViewController:wellcome sender:0];
-    }else{
-        [self showViewController:login sender:0];
-    }
 }
 
 /*

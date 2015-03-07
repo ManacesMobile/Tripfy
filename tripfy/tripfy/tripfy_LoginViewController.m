@@ -10,9 +10,13 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "AppDelegate.h"
+#import "tripfy_ProfileViewController.h"
+
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @interface tripfy_LoginViewController ()<UIScrollViewDelegate,UITextFieldDelegate>{
     AppDelegate *tripfy;
+    tripfy_ProfileViewController *profil;
 }
 
 @end
@@ -25,6 +29,8 @@
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [txt_email setReturnKeyType:UIReturnKeyGo];
     [txt_password setReturnKeyType:UIReturnKeyGo];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    profil = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_ProfileViewController"];
     // Do any additional setup after loading the view.
 }
 
@@ -124,5 +130,11 @@
 }
 
 - (IBAction)signUp:(id)sender {
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        [self presentViewController:profil animated:NO completion:nil];
+    }else{
+        [self showViewController:profil sender:0];
+    }
+   
 }
 @end

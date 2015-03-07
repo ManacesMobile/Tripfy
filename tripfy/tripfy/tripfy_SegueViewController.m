@@ -8,8 +8,10 @@
 
 #import "tripfy_SegueViewController.h"
 #import "tripfy_LoginViewController.h"
-#import "tripfy_TabbarViewController.h"
+#import "tripfy_MainViewController.h"
 #import "tripfy_WellcomeViewController.h"
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "AppDelegate.h"
 
 #define SegueIdentifierMain @"main"
@@ -20,7 +22,7 @@
     AppDelegate *tripfy;
 }
 @property (strong, nonatomic) NSString *currentSegueIdentifier;
-@property (strong, nonatomic) tripfy_TabbarViewController *mainViewController;
+@property (strong, nonatomic) tripfy_MainViewController *mainViewController;
 @property (strong, nonatomic) tripfy_LoginViewController *loginViewController;
 @property (strong, nonatomic) tripfy_WellcomeViewController *wellcomeViewController;
 @end
@@ -32,19 +34,23 @@
     holdTagValue = @"";
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *certificate = [userDefaults objectForKey:@"certificate"];
-    if (![[tripfy utils] stringCheck:certificate]) {
-        self.currentSegueIdentifier = SegueIdentifierLogin;
+    
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        NSLog(@"Enter");
+       self.currentSegueIdentifier = SegueIdentifierWellcome;
     }else{
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        self.currentSegueIdentifier = SegueIdentifierLogin;
+    }
+
+    
+        /*NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *drawPatternLockKey = [userDefaults objectForKey:@"lockPassword"];
         if (![[tripfy utils] stringCheck:drawPatternLockKey]) {
             self.currentSegueIdentifier = SegueIdentifierLogin;
         }else{
             self.currentSegueIdentifier = SegueIdentifierWellcome;
-        }
-    }
+        }*/
+    
     
     
     [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];

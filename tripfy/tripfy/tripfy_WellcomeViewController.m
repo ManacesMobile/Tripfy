@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "AppDelegate.h"
+#import "SevenSwitch.h"
+
 
 @interface tripfy_WellcomeViewController (){
     AppDelegate *tripfy;
@@ -18,12 +20,26 @@
 @end
 
 @implementation tripfy_WellcomeViewController
-
+@synthesize view_switch,btn_plan,btn_quickTrip;
 - (void)viewDidLoad {
     [super viewDidLoad];
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
     [self _loadData];
+    SevenSwitch *selectSwitch = [[SevenSwitch alloc] initWithFrame:CGRectMake(0, 4, 70, 35)];
+    selectSwitch.center = CGPointMake(30, 22);
+    [selectSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    selectSwitch.onImage = [UIImage imageNamed:@"taxi.png"];
+    selectSwitch.offImage = [UIImage imageNamed:@"passenger.png"];
+    selectSwitch.onColor = [UIColor clearColor];
+    [selectSwitch setOn:YES];
+                            
+    selectSwitch.isRounded = NO;
+    [self.view_switch addSubview:selectSwitch];
+    
+    btn_quickTrip.layer.cornerRadius = 3;
+    btn_plan.layer.cornerRadius = 3;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +56,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)switchChanged:(SevenSwitch *)sender {
+    NSLog(@"Changed value to: %@", sender.on ? @"ON" : @"OFF");
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         if (sender.on) {
+                             self.view.backgroundColor = UIColorFromRGB(0x2D9AE0);
+                         }else{
+                             self.view.backgroundColor = UIColorFromRGB(0xFCC208);
+                         }
+                         
+                         [self.view layoutIfNeeded]; // Called on parent view
+                     }];
+    
+}
 
 - (void)_loadData {
     // If the user is already logged in, display any previously cached values before we get the latest from Facebook.
@@ -131,7 +163,8 @@
     // Set the name in the header view label
     NSString *name = [PFUser currentUser][@"profile"][@"name"];
     if (name) {
-        self.headerNameLabel.text = name;
+        
+        self.headerNameLabel.text = [NSString stringWithFormat:@"Hello %@. Wellcome to Tripfy!",name];
     }
     
     NSString *userProfilePhotoURLString = [PFUser currentUser][@"profile"][@"pictureURL"];
@@ -144,7 +177,8 @@
                                            queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                    if (connectionError == nil && data != nil) {
-                                       self.headerImageView.image = [UIImage imageWithData:data];
+                                       
+                                       self.headerImageView.image = [[tripfy utils] maskImage:[UIImage imageWithData:data] withMask:[UIImage imageNamed:@"mask.png"]];
                                        
                                        // Add a nice corner radius to the image
                                        self.headerImageView.layer.cornerRadius = 8.0f;
@@ -174,5 +208,11 @@
     [tripfy.root login];
     
     // Return to login view controller
+}
+
+- (IBAction)plan:(id)sender {
+}
+
+- (IBAction)quickTrip:(id)sender {
 }
 @end
