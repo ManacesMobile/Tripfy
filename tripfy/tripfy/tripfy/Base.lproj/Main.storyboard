@@ -455,7 +455,7 @@
                                             <constraint firstAttribute="width" constant="70" id="eKc-8G-LSc"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y76-o1-LbC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tripfy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y76-o1-LbC">
                                         <rect key="frame" x="240" y="11" width="120" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="fWH-QO-gon"/>
@@ -478,6 +478,7 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1764705882" green="0.60392156860000001" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ReE-Ln-ibL" secondAttribute="trailing" constant="8" id="7Wx-BZ-bh7"/>
                                     <constraint firstAttribute="bottom" secondItem="ReE-Ln-ibL" secondAttribute="bottom" id="QyV-Q6-fz6"/>
@@ -518,7 +519,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpY-O9-mSB">
-                                                <rect key="frame" x="8" y="279" width="300" height="44"/>
+                                                <rect key="frame" x="8" y="306" width="300" height="44"/>
                                                 <color key="backgroundColor" red="0.1764705882" green="0.60392156860000001" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Plan a Trip">
@@ -527,18 +528,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="plan:" destination="lkF-EL-mKK" eventType="touchUpInside" id="TJI-lf-6bJ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08f-k5-ax5">
-                                                <rect key="frame" x="8" y="333" width="300" height="44"/>
-                                                <color key="backgroundColor" red="0.96862745098039216" green="0.29019607843137257" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <state key="normal" title="Quick Trip">
-                                                    <color key="titleColor" red="1" green="1" blue="0.99984377619999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="quickTrip:" destination="lkF-EL-mKK" eventType="touchUpInside" id="SBI-5Y-qmP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -581,10 +570,10 @@
                     </view>
                     <connections>
                         <outlet property="btn_plan" destination="XpY-O9-mSB" id="2Ol-Xz-0nh"/>
-                        <outlet property="btn_quickTrip" destination="08f-k5-ax5" id="i5L-Fd-rEH"/>
                         <outlet property="headerImageView" destination="Wah-AR-Mb4" id="atI-bW-Jvf"/>
                         <outlet property="headerNameLabel" destination="54X-fk-tEs" id="JxG-tm-982"/>
                         <outlet property="headerView" destination="TTB-Nt-MHz" id="z0B-Ma-8ZP"/>
+                        <outlet property="lbl_info" destination="9Ke-Lz-hfQ" id="YuC-LZ-hwM"/>
                         <outlet property="view_switch" destination="ReE-Ln-ibL" id="FVe-Z7-OgX"/>
                     </connections>
                 </viewController>

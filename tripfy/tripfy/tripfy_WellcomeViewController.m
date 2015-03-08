@@ -20,7 +20,7 @@
 @end
 
 @implementation tripfy_WellcomeViewController
-@synthesize view_switch,btn_plan,btn_quickTrip;
+@synthesize view_switch,btn_plan,lbl_info;
 - (void)viewDidLoad {
     [super viewDidLoad];
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -37,7 +37,7 @@
     selectSwitch.isRounded = NO;
     [self.view_switch addSubview:selectSwitch];
     
-    btn_quickTrip.layer.cornerRadius = 3;
+
     btn_plan.layer.cornerRadius = 3;
 
 }
@@ -64,8 +64,14 @@
                      animations:^{
                          if (sender.on) {
                              self.view.backgroundColor = UIColorFromRGB(0x2D9AE0);
+                             btn_plan.backgroundColor = UIColorFromRGB(0x2D9AE0);
+                             [btn_plan setTitle:@"Plan a Trip" forState:UIControlStateNormal];
+                             lbl_info.text = @"You have not set trip any yet. Why dont you create one?";
                          }else{
                              self.view.backgroundColor = UIColorFromRGB(0xFCC208);
+                             btn_plan.backgroundColor = UIColorFromRGB(0xFCC208);
+                             [btn_plan setTitle:@"Search a Trip" forState:UIControlStateNormal];
+                             lbl_info.text = @"You have not get trip any yet. Why dont you search one?";
                          }
                          
                          [self.view layoutIfNeeded]; // Called on parent view

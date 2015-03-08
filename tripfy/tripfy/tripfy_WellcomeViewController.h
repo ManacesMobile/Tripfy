@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_switch;
 @property (weak, nonatomic) IBOutlet UIButton *btn_plan;
 @property (weak, nonatomic) IBOutlet UIButton *btn_quickTrip;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_info;
 
 - (IBAction)enter:(id)sender;
 - (IBAction)logOut:(id)sender;
