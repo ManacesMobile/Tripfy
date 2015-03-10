@@ -25,13 +25,25 @@
     AppDelegate *tripfy;
     BOOL isQuickTrip;
     tripfy_Trip *trip;
+    NSString *depertureDate;
+    NSString *returnDate;
+    UILabel *depertureDateLbl;
+    UILabel *returnDateLbl;
+    UILabel *seatNumberLbl;
+    UILabel *seatPriceLbl;
+    UILabel *maxLuggageLbl;
+    UILabel *befortimeLbl;
+    UITextField *departureTxt;
+    UITextField *destinationTxt;
+    BOOL isCigarette;
+    BOOL isPetCarry;
 }
 
 
 @end
 
 @implementation tripfy_SearchViewController
-@synthesize view_plannedTrip,view_search,table_plannedTrip;
+@synthesize view_plannedTrip,view_search,table_plannedTrip,btn_planTrip;
 - (void)viewDidLoad {
     [super viewDidLoad];
     isQuickTrip = NO;
@@ -39,6 +51,7 @@
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setTripArrays];
     [self setTableReload];
+    btn_planTrip.layer.cornerRadius = 3;
     // Do any additional setup after loading the view.
 }
 
@@ -58,10 +71,10 @@
     mArr_dateTitle = [[NSMutableArray alloc] initWithObjects:@"Departure Date",@"Return Date", nil];
     
     mArr_seatImg = [[NSMutableArray alloc] initWithObjects:@"NumberofSeats.png",@"SeatPrice.png", nil];
-    mArr_seatTitle = [[NSMutableArray alloc] initWithObjects:@"Number of Seats",@"Seat Price", nil];
+    mArr_seatTitle = [[NSMutableArray alloc] initWithObjects:@"Number of Seats",@"Seat Price($)", nil];
     
     mArr_detailImg = [[NSMutableArray alloc] initWithObjects:@"DepartureTime.png",@"DepartureTime.png", @"Luggage.png",@"latency.png",@"Note.png", nil];
-    mArr_detailTitle = [[NSMutableArray alloc] initWithObjects:@"Cigaret",@"Pet",@"Max Luggage",@"Befortime-Delay",@"Trip Information", nil];
+    mArr_detailTitle = [[NSMutableArray alloc] initWithObjects:@"Cigaret",@"Pet",@"Max Luggage(kg)",@"Befortime-Delay(mn)",@"Trip Information", nil];
 }
 
 -(void) setQuickTripArrays{
@@ -71,16 +84,18 @@
     mArr_wayText = [[NSMutableArray alloc] initWithObjects:@"From",@"Destination", nil];
     
     mArr_seatImg = [[NSMutableArray alloc] initWithObjects:@"NumberofSeats.png",@"SeatPrice.png", nil];
-    mArr_seatTitle = [[NSMutableArray alloc] initWithObjects:@"Number of Seats",@"Seat Price", nil];
+    mArr_seatTitle = [[NSMutableArray alloc] initWithObjects:@"Number of Seats",@"Seat Price($)", nil];
     
     mArr_detailImg = [[NSMutableArray alloc] initWithObjects:@"DepartureTime.png",@"DepartureTime.png", @"Luggage.png",@"latency.png",@"Note.png", nil];
-    mArr_detailTitle = [[NSMutableArray alloc] initWithObjects:@"Cigaret",@"Pet",@"Max Luggage",@"Befortime-Delay",@"Trip Information", nil];
+    mArr_detailTitle = [[NSMutableArray alloc] initWithObjects:@"Cigaret",@"Pet",@"Max Luggage(kg)",@"Befortime-Delay(mn)",@"Trip Information", nil];
 }
 
 -(void) setPassenger{
     view_search.hidden = NO;
     view_plannedTrip.hidden = YES;
 }
+
+
 
 -(void) setDriver{
     view_search.hidden = YES;
@@ -148,6 +163,11 @@
             tripfy_DestinationTableViewCell *wayCell = (tripfy_DestinationTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
             wayCell.img_icon.image = [UIImage imageNamed:[mArr_way objectAtIndex:indexPath.row]];
             wayCell.txt_way.placeholder = [mArr_wayText objectAtIndex:indexPath.row];
+            if (indexPath.row == 0) {
+                departureTxt = wayCell.txt_way;
+            }else if (indexPath.row == 1) {
+                destinationTxt = wayCell.txt_way;
+            }
             return wayCell;
         }else if (indexPath.section==2) {//tripfy_DetailsTableViewCell
             static NSString *CellWithIdentifier = @"DetailsCell";
@@ -155,11 +175,29 @@
             seatCell.switcSelect.hidden = YES;
             seatCell.lbl_title.text = [mArr_seatTitle objectAtIndex:indexPath.row];
             seatCell.img_icon.image = [UIImage imageNamed:[mArr_seatImg objectAtIndex:indexPath.row]];
+            [seatCell.stepper setTag:indexPath.row];
+            [seatCell.stepper addTarget:self action:@selector(seatOneChanged:) forControlEvents:UIControlEventValueChanged];
+            
+            if (indexPath.row==0) {
+                seatNumberLbl = seatCell.lbl_amount;
+                [seatCell.stepper setMaximumValue:6];
+                [seatCell.stepper setMinimumValue:1];
+                
+            }else if (indexPath.row==1) {
+                seatPriceLbl = seatCell.lbl_amount;
+                [seatCell.stepper setMaximumValue:50];
+                [seatCell.stepper setMinimumValue:1];
+            }
             return seatCell;
         }else{
             static NSString *CellWithIdentifier = @"DetailsCell";
             tripfy_DetailsTableViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
             if (indexPath.row==0 || indexPath.row==1) {
+                if (indexPath.row==0) {
+                    [detailCell.switcSelect addTarget: self action: @selector(cigarette:) forControlEvents: UIControlEventValueChanged];
+                }else if (indexPath.row==1) {
+                    [detailCell.switcSelect addTarget: self action: @selector(pet:) forControlEvents: UIControlEventValueChanged];
+                }
                 detailCell.stepper.hidden = YES;
                 detailCell.lbl_amount.hidden = YES;
                 detailCell.switcSelect.hidden = NO;
@@ -167,6 +205,16 @@
                 
                 [detailCell.switcSelect addTarget: self action: @selector(detailSwitch:) forControlEvents: UIControlEventValueChanged];
             }else if(indexPath.row==3 || indexPath.row==2){
+                if (indexPath.row==2) {
+                    maxLuggageLbl = detailCell.lbl_amount;
+                }else if (indexPath.row==3) {
+                    befortimeLbl = detailCell.lbl_amount;
+                }
+                [detailCell.stepper setTag:indexPath.row];
+                [detailCell.stepper addTarget:self action:@selector(detailOneChanged:) forControlEvents:UIControlEventValueChanged];
+                
+                [detailCell.stepper setMaximumValue:15];
+                [detailCell.stepper setMinimumValue:1];
                 detailCell.switcSelect.hidden = YES;
                 detailCell.stepper.hidden = NO;
                 detailCell.lbl_amount.hidden = NO;
@@ -206,11 +254,21 @@
             tripfy_DestinationTableViewCell *wayCell = (tripfy_DestinationTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
             wayCell.img_icon.image = [UIImage imageNamed:[mArr_way objectAtIndex:indexPath.row]];
             wayCell.txt_way.placeholder = [mArr_wayText objectAtIndex:indexPath.row];
+            if (indexPath.row == 0) {
+                departureTxt = wayCell.txt_way;
+            }else if (indexPath.row == 1) {
+                destinationTxt = wayCell.txt_way;
+            }
             return wayCell;
         }else if (indexPath.section==2) {//tripfy_DateTableViewCell
             static NSString *CellWithIdentifier = @"DateCell";
             tripfy_DateTableViewCell *dateCell = (tripfy_DateTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
             dateCell.lbl_dateTitle.text = [mArr_dateTitle objectAtIndex:indexPath.row];
+            if (indexPath.row==0) {
+                depertureDateLbl = dateCell.lbl_date;
+            }if (indexPath.row==1) {
+                returnDateLbl = dateCell.lbl_date;
+            }
             return dateCell;
         }else if (indexPath.section==3) {//tripfy_DetailsTableViewCell
             static NSString *CellWithIdentifier = @"DetailsCell";
@@ -218,11 +276,27 @@
             seatCell.switcSelect.hidden = YES;
             seatCell.lbl_title.text = [mArr_seatTitle objectAtIndex:indexPath.row];
             seatCell.img_icon.image = [UIImage imageNamed:[mArr_seatImg objectAtIndex:indexPath.row]];
+            [seatCell.stepper setTag:indexPath.row];
+            [seatCell.stepper addTarget:self action:@selector(seatOneChanged:) forControlEvents:UIControlEventValueChanged];
+            if (indexPath.row==0) {
+                seatNumberLbl = seatCell.lbl_amount;
+                [seatCell.stepper setMaximumValue:6];
+                [seatCell.stepper setMinimumValue:1];
+            }else if (indexPath.row==1) {
+                seatPriceLbl = seatCell.lbl_amount;
+                [seatCell.stepper setMaximumValue:50];
+                [seatCell.stepper setMinimumValue:1];
+            }
             return seatCell;
         }else{
             static NSString *CellWithIdentifier = @"DetailsCell";
             tripfy_DetailsTableViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
             if (indexPath.row==0 || indexPath.row==1) {
+                if (indexPath.row==0) {
+                    [detailCell.switcSelect addTarget: self action: @selector(cigarette:) forControlEvents: UIControlEventValueChanged];
+                }else if (indexPath.row==1) {
+                    [detailCell.switcSelect addTarget: self action: @selector(pet:) forControlEvents: UIControlEventValueChanged];
+                }
                 detailCell.stepper.hidden = YES;
                 detailCell.lbl_amount.hidden = YES;
                 detailCell.switcSelect.hidden = NO;
@@ -230,6 +304,17 @@
                 [detailCell.switcSelect addTarget: self action: @selector(detailSwitch:) forControlEvents: UIControlEventValueChanged];
                 
             }else if(indexPath.row==3 || indexPath.row==2){
+                if (indexPath.row==2) {
+                    maxLuggageLbl = detailCell.lbl_amount;
+                }else if (indexPath.row==3) {
+                    befortimeLbl = detailCell.lbl_amount;
+                }
+                [detailCell.stepper setTag:indexPath.row];
+                [detailCell.stepper addTarget:self action:@selector(detailOneChanged:) forControlEvents:UIControlEventValueChanged];
+                
+                [detailCell.stepper setMaximumValue:15];
+                [detailCell.stepper setMinimumValue:1];
+                
                 detailCell.switcSelect.hidden = YES;
                 detailCell.stepper.hidden = NO;
                 detailCell.lbl_amount.hidden = NO;
@@ -251,6 +336,36 @@
     
         
 }//quickSwitch
+
+-(void)cigarette:(id) sender{
+    UISwitch *senderSwitch = (UISwitch *)sender;
+    isCigarette = senderSwitch.on;
+}
+
+-(void)pet:(id) sender{
+    UISwitch *senderSwitch = (UISwitch *)sender;
+    isPetCarry = senderSwitch.on;
+}
+
+
+-(void)detailOneChanged:(id) sender{
+    UIStepper *selectedStepper = (UIStepper *)sender;
+    if ([sender tag]==2) {
+        maxLuggageLbl.text = [NSString stringWithFormat:@"%.0f",selectedStepper.value];
+    }else if ([sender tag]==3) {
+        befortimeLbl.text = [NSString stringWithFormat:@"%.0f",selectedStepper.value];
+    }
+}
+
+
+-(void)seatOneChanged:(id) sender{
+    UIStepper *selectedStepper = (UIStepper *)sender;
+    if ([sender tag]==0) {
+        seatNumberLbl.text = [NSString stringWithFormat:@"%.0f",selectedStepper.value];
+    }else if ([sender tag]==1) {
+        seatPriceLbl.text = [NSString stringWithFormat:@"%.0f",selectedStepper.value];
+    }
+}
 
 -(void)quickSwitch:(id) sender{
     UISwitch *senderSwitch = (UISwitch *)sender;
@@ -309,7 +424,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (!isQuickTrip) {
+        if (indexPath.section==2) {
+            if (indexPath.row==0) {
+                [tripfy.root.mainViewController setDatePickerValues:depertureDateLbl selectedVal:depertureDate];
+            }else if (indexPath.row==1) {
+                [tripfy.root.mainViewController setDatePickerValues:returnDateLbl selectedVal:returnDate];
+            }
+            //
+        }
+    }
 }
 /*
 #pragma mark - Navigation
@@ -320,5 +444,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)save:(id)sender {
+    NSLog(@"%@");
+}
 
 @end

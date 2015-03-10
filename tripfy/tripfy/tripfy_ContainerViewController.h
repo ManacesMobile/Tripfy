@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "tripfy_SegueViewController.h"
+#import "tripfy_MainViewController.h"
 
 @interface tripfy_ContainerViewController : UIViewController
 @property (nonatomic, weak) tripfy_SegueViewController *tripfy_segue;
+@property (nonatomic, weak) tripfy_MainViewController *mainViewController;
 @property (nonatomic) BOOL isPassenger;
 -(void) wellcome;
 -(void) main;

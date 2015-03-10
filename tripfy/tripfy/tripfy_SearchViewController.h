@@ -12,8 +12,10 @@
 @property (nonatomic,retain) IBOutlet UITableView *table_plannedTrip;
 @property (weak, nonatomic) IBOutlet UIView *view_search;
 @property (weak, nonatomic) IBOutlet UIView *view_plannedTrip;
+@property (weak, nonatomic) IBOutlet UIButton *btn_planTrip;
 
--(void) setDriver;
--(void) setPassenger;
+- (void) setDriver;
+- (void) setPassenger;
+- (IBAction)save:(id)sender;
 
 @end

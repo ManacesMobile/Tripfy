@@ -24,12 +24,15 @@
     AppDelegate *tripfy;
     tripfy_SearchViewController *plan;
     tripfy_SearchViewController *search;
+    UILabel *selectedDateLbl;
+    NSString *dateValue;
+    NSDate *dateSelected;
 }
 
 @end
 
 @implementation tripfy_MainViewController
-
+@synthesize bottom,datePicker;
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.navigationController.navigationBar.hidden = YES;
@@ -37,6 +40,7 @@
     login = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_LoginViewController"];
     wellcome = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_WellcomeViewController"];
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    tripfy.root.mainViewController = self;
     // Do any additional setup after loading the view.
     
     tabbarPassenger = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_TabbarViewController"];
@@ -45,7 +49,7 @@
        tabbarPassenger.selectedIndex = tripfy.index;
     }
     tabbarPassenger.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    tabbarPassenger.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
+    tabbarPassenger.view.frame = CGRectMake(0, 0, self.view_container.frame.size.width, self.view_container.frame.size.height);
     //tabbarPassenger.view.hidden = YES;
     
     tabbarDriver = [storyboard instantiateViewControllerWithIdentifier:@"tripfy_TabbarViewController"];
@@ -54,11 +58,11 @@
         tabbarDriver.selectedIndex = tripfy.index;
     }
     tabbarDriver.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    tabbarDriver.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
+    tabbarDriver.view.frame = CGRectMake(0, 0, self.view_container.frame.size.width, self.view_container.frame.size.height);
     //tabbarDriver.view.hidden = YES;
     
-    [self.view addSubview:tabbarPassenger.view];
-    [self.view addSubview:tabbarDriver.view];
+    [self.view_container addSubview:tabbarPassenger.view];
+    [self.view_container addSubview:tabbarDriver.view];
     
     SevenSwitch *selectSwitch = [[SevenSwitch alloc] initWithFrame:CGRectMake(0, 4, 70, 35)];
     selectSwitch.center = CGPointMake(30, 22);
@@ -87,8 +91,9 @@
     
     selectSwitch.isRounded = NO;
     [self.view_switch addSubview:selectSwitch];
-    
+    [datePicker addTarget:self action:@selector(pickerValueChanged:) forControlEvents:UIControlEventValueChanged];
 }
+
 
 
 - (void)switchChanged:(SevenSwitch *)sender {
@@ -168,6 +173,49 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void) setDatePickerValues:(UILabel *) _showLbl selectedVal:(NSString *) _valLbl{
+    dateSelected = [NSDate new];
+    selectedDateLbl = _showLbl;
+    dateValue = _valLbl;
+    [self showDatePicker:0];
+}
+
+-(void) showDatePicker:(int) _select{
+    [self.view endEditing:YES];
+    CGFloat bottomFloat;
+
+    if (_select==1) {
+        bottomFloat = -300;
+    }else{
+        bottomFloat = 0;
+    }
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         bottom.constant = bottomFloat;
+                         [self.view layoutIfNeeded]; // Called on parent view
+                     }];
+}
+
+-(void) pickerValueChanged:(UIDatePicker *) _pickr{
+    dateSelected = _pickr.date;
+}
+
+- (IBAction)doneDate:(id)sender{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSDateFormatter *formatID = [[NSDateFormatter alloc] init];
+    [formatID setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [format stringFromDate:dateSelected];
+    NSString *dateStringID = [formatID stringFromDate:dateSelected];
+    selectedDateLbl.text = dateString;
+    dateValue = dateStringID;
+    [self showDatePicker:1];
+}
+
+- (IBAction)cancelDate:(id)sender{
+    [self showDatePicker:1];
+}
 
 - (IBAction)messenger:(id)sender {
     
