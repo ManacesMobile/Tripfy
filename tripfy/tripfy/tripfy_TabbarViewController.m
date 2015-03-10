@@ -17,12 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) viewWillAppear:(BOOL)animated{
+    [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:@"Test"];
+
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:NSLocalizedString(@"BotonMapas", @"comment")];
+
+    [self.tabBarController setSelectedIndex:2];
+}
+
 
 /*
 #pragma mark - Navigation

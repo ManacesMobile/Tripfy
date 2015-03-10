@@ -11,11 +11,6 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "tripfy_ProgressViewController.h"
 
-#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
-#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 @interface AppDelegate (){
     tripfy_ProgressViewController *progress;
@@ -24,7 +19,7 @@
 @end
 
 @implementation AppDelegate
-@synthesize utils;
+@synthesize utils,index;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -94,6 +89,7 @@
     [self hideProgress];
     
     utils = [[tripfy_Utilties alloc] init];
+    index = -1;
     
     return YES;
 }

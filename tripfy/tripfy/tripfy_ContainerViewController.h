@@ -11,7 +11,7 @@
 
 @interface tripfy_ContainerViewController : UIViewController
 @property (nonatomic, weak) tripfy_SegueViewController *tripfy_segue;
-
+@property (nonatomic) BOOL isPassenger;
 -(void) wellcome;
 -(void) main;
 -(void) login;

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface tripfy_SearchViewController : UIViewController
+@interface tripfy_SearchViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,retain) IBOutlet UITableView *table_plannedTrip;
+@property (weak, nonatomic) IBOutlet UIView *view_search;
+@property (weak, nonatomic) IBOutlet UIView *view_plannedTrip;
+
+-(void) setDriver;
+-(void) setPassenger;
 
 @end

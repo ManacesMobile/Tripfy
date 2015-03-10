@@ -29,15 +29,15 @@
     SevenSwitch *selectSwitch = [[SevenSwitch alloc] initWithFrame:CGRectMake(0, 4, 70, 35)];
     selectSwitch.center = CGPointMake(30, 22);
     [selectSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-    selectSwitch.onImage = [UIImage imageNamed:@"taxi.png"];
-    selectSwitch.offImage = [UIImage imageNamed:@"passenger.png"];
+    selectSwitch.onImage = [UIImage imageNamed:@"passenger.png"];
+    selectSwitch.offImage = [UIImage imageNamed:@"taxi.png"];
     selectSwitch.onColor = [UIColor clearColor];
     [selectSwitch setOn:YES];
                             
     selectSwitch.isRounded = NO;
     [self.view_switch addSubview:selectSwitch];
     
-
+    
     btn_plan.layer.cornerRadius = 3;
 
 }
@@ -63,15 +63,17 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                          if (sender.on) {
+                             tripfy.root.isPassenger = YES;
                              self.view.backgroundColor = UIColorFromRGB(0x2D9AE0);
                              btn_plan.backgroundColor = UIColorFromRGB(0x2D9AE0);
-                             [btn_plan setTitle:@"Plan a Trip" forState:UIControlStateNormal];
-                             lbl_info.text = @"You have not set trip any yet. Why dont you create one?";
-                         }else{
-                             self.view.backgroundColor = UIColorFromRGB(0xFCC208);
-                             btn_plan.backgroundColor = UIColorFromRGB(0xFCC208);
                              [btn_plan setTitle:@"Search a Trip" forState:UIControlStateNormal];
                              lbl_info.text = @"You have not get trip any yet. Why dont you search one?";
+                         }else{
+                             tripfy.root.isPassenger = NO;
+                             self.view.backgroundColor = UIColorFromRGB(0xFCC208);
+                             btn_plan.backgroundColor = UIColorFromRGB(0xFCC208);
+                             [btn_plan setTitle:@"Plan a Trip" forState:UIControlStateNormal];
+                             lbl_info.text = @"You have not set trip any yet. Why dont you create one?";
                          }
                          
                          [self.view layoutIfNeeded]; // Called on parent view
@@ -205,6 +207,7 @@
 }
 
 - (IBAction)enter:(id)sender {
+    tripfy.index = 2;
     [tripfy.root main];
     
 }
@@ -217,6 +220,21 @@
 }
 
 - (IBAction)plan:(id)sender {
+    tripfy.index = 2;
+    [tripfy.root main];
+    if (tripfy.root.isPassenger) {
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+            
+        }else{
+            
+        }
+    }else{
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+            
+        }else{
+           
+        }
+    }
 }
 
 - (IBAction)quickTrip:(id)sender {

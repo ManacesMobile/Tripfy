@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "tripfy_SegueViewController.h"
-@interface tripfy_MainViewController : UIViewController
+@interface tripfy_MainViewController : UIViewController<UITabBarControllerDelegate>
 @property (nonatomic, weak) tripfy_SegueViewController *tripfy_segue;
+@property (weak, nonatomic) IBOutlet UIView *view_switch;
+- (IBAction)messenger:(id)sender;
 @end

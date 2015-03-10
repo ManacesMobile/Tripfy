@@ -16,11 +16,12 @@
 @end
 
 @implementation tripfy_ContainerViewController
-
+@synthesize isPassenger;
 - (void)viewDidLoad {
     [super viewDidLoad];
     tripfy = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     tripfy.root = self;
+    isPassenger = YES;
     // Do any additional setup after loading the view.
 }
 

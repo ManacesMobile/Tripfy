@@ -90,7 +90,6 @@
         else {
             [self addChildViewController:segue.destinationViewController];
             mainView = ((UIViewController *)segue.destinationViewController).view;
-            
             mainView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             mainView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
             [self.view addSubview:mainView];
@@ -105,6 +104,7 @@
             mainView.hidden = YES;
             wellcomeView.hidden = YES;
             loginView.hidden = NO;
+            
             
         }
         else {
